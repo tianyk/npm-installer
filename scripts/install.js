@@ -33,7 +33,7 @@ if ( version.slice(-4) === '-sdk' ){
 }
 
 var url = false;
-var arch = process.env.npm_config_nwjs_process_arch || process.arch;
+var arch = process.env.npm_config_nwjs_process_arch || process.env.NWJS_PROCESS_ARCH || process.arch;
 var urlBase = process.env.npm_config_nwjs_urlbase || process.env.NWJS_URLBASE ||  'https://dl.nwjs.io/v';
 var buildTypeSuffix = buildType === 'normal' ? '' : ('-' + buildType);
 var platform = process.env.npm_config_nwjs_platform || process.env.NWJS_PLATFORM || process.platform;
