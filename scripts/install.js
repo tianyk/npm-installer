@@ -14,7 +14,7 @@ var chalk = require('chalk');
 
 var buildType = process.env.npm_config_nwjs_build_type || process.env.NWJS_BUILD_TYPE || 'normal';
 
-var v = semver.parse(require('../package.json').version);
+var v = semver.parse(process.env.npm_config_nwjs_version || process.env.NWJS_VERSION || require('../package.json').version);
 var version = [v.major, v.minor, v.patch].join('.');
 if (v.prerelease && typeof v.prerelease[0] === 'string') {
   var prerelease = v.prerelease[0].split('-');
