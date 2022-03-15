@@ -1,5 +1,5 @@
 {
-  "name": "nw",
+  "name": "@tianyk/nw",
   "version": "0.62.0-sdk",
   "description": "A installer for nw.js",
   "repository": {
