@@ -2,35 +2,16 @@
 
 var download = require('download');
 var rimraf = require('rimraf');
-var semver = require('semver');
 var ProgressBar = require('progress')
 var path = require('path');
-var fs = require('fs');
 var merge = require('merge');
 var urlModule = require('url');
 var Decompress = require('decompress');
 var fileExists = require('file-exists');
 var chalk = require('chalk');
 
-var buildType = process.env.npm_config_nwjs_build_type || process.env.NWJS_BUILD_TYPE || 'normal';
-
-var v = semver.parse(process.env.npm_config_nwjs_version || process.env.NWJS_VERSION || require('../package.json').version);
-var version = [v.major, v.minor, v.patch].join('.');
-if (v.prerelease && typeof v.prerelease[0] === 'string') {
-  var prerelease = v.prerelease[0].split('-');
-  if (prerelease.length > 1) {
-    prerelease = prerelease.slice(0, -1);
-  }
-  version += '-' + prerelease.join('-');
-}
-
-if ( version.slice(-4) === '-sdk' ){
-   version = version.slice(0, -4);
-   buildType = 'sdk';
-} else if ( version.slice(-3) === 'sdk' ){
-   version = version.slice(0, -3);
-   buildType = 'sdk';
-}
+var buildType = process.env.npm_config_nwjs_build_type || process.env.NWJS_BUILD_TYPE || require('../package.json').nwjs.buildType || 'normal';
+var version = process.env.npm_config_nwjs_version || process.env.NWJS_VERSION || require('../package.json').nwjs.version;
 
 var url = false;
 var arch = process.env.npm_config_nwjs_process_arch || process.env.NWJS_PROCESS_ARCH || process.arch;

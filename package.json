@@ -1,7 +1,11 @@
 {
   "name": "@tianyk/nw",
-  "version": "0.62.0-sdk",
+  "version": "1.0.0",
   "description": "A installer for nw.js",
+  "nwjs": {
+    "version": "0.14.0", 
+    "buildType": "sdk"
+  }, 
   "repository": {
     "type": "git",
     "url": "git://github.com/nwjs/npm-installer.git"
